@@ -4,13 +4,19 @@
 import "./App.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Modal from "./components/Modal/Modal";
+
 function App() {
 	const [isEightBallCheck, setIsEightBallCheck] = useState(false);
 	const [isNumberToGuess, setIsNumberToGuess] = useState(
 		Math.floor(Math.random() * 10) + 1
 	);
 	const [isGuessedNumber, setIsGuessedNumber] = useState();
+	const modalTitle = "Insert Modal Title";
+	const modalContent = "Insert Modal Content";
+	const [isOpen, setIsOpen] = useState(false);
+
 	let navigate = useNavigate();
 	let guessNumberOptions = [
 		"1",
@@ -193,18 +199,56 @@ function App() {
 		event.preventDefault();
 		if (isGuessedNumber == isNumberToGuess) {
 			navigate("/thanks", { replace: true });
+			setIsOpen(false);
 		} else {
 		}
 	}
+
 	return (
 		<div className="app">
 			<nav className="app-nav">
-				<Link to="/">Home</Link>
+				<a onClick={() => setIsOpen(true)}>Home</a>
+				{isOpen && (
+					<Modal
+						title={modalTitle}
+						content={modalContent}
+						setIsOpen={setIsOpen}
+					/>
+				)}
+
 				<a onClick={eightBallCheck} href="javascript:void(0)">
 					Objective
 				</a>
 				<Link to="teams">Teams</Link>
-				<Link to="thanks">Thank You</Link>
+				<a onClick={() => setIsOpen(true)}>Thank You</a>
+				{isOpen && (
+					<Modal
+						title={modalTitle}
+						content={
+							<form onSubmit={handleSubmit}>
+								<select
+									value={isGuessedNumber}
+									onChange={handleSelectChange}
+								>
+									{shuffledNumbers.map((number) => {
+										return (
+											<option
+												value={number}
+												selected={
+													isGuessedNumber == number
+												}
+											>
+												{number}
+											</option>
+										);
+									})}
+								</select>
+								<button type="submit">Submit</button>
+							</form>
+						}
+						setIsOpen={setIsOpen}
+					/>
+				)}
 			</nav>
 			<div className="app-content">
 				<Outlet />
@@ -226,21 +270,6 @@ function App() {
 					</div>
 				</section>
 			)}
-			<form onSubmit={handleSubmit}>
-				<select value={isGuessedNumber} onChange={handleSelectChange}>
-					{shuffledNumbers.map((number) => {
-						return (
-							<option
-								value={number}
-								selected={isGuessedNumber == number}
-							>
-								{number}
-							</option>
-						);
-					})}
-				</select>
-				<button type="submit">Submit</button>
-			</form>
 			<footer>
 				<p>Credera ♥️ XD</p>
 			</footer>
