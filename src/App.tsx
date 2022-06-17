@@ -17,8 +17,6 @@ function App() {
 	const [isGuessedNumber, setIsGuessedNumber] = useState();
   const [isBeeMovieCheck, setIsBeeMovieCheck] = useState(false);
   const [isBeeMovieButtonActive, setIsBeeMovieButtonActive] = useState(false);
-	const modalTitle = "Insert Modal Title";
-	const modalContent = "Insert Modal Content";
 	const [isOpen, setIsOpen] = useState(false);
 
   const moveLink = () =>{
@@ -212,6 +210,9 @@ function App() {
 			navigate("/", { replace: true });
 			setIsOpen(false);
 		} else {
+      const button = document.querySelector('#submit')
+      button.innerHTML = "TRY AGAIN!";
+      button.classList.add("try-again");
 		}
 	}
 
@@ -1650,7 +1651,7 @@ function App() {
 				<a onClick={() => setIsOpen(true)}>Home</a>
 				{isOpen && (
 					<Modal
-						title={modalTitle}
+						title={'What number am I thinking of?'}
 						content={
 							<form onSubmit={handleSubmit}>
 								<select
@@ -1670,7 +1671,7 @@ function App() {
 										);
 									})}
 								</select>
-								<button type="submit">Submit</button>
+								<button id="submit" type="submit">Submit</button>
 							</form>
 						}
 						setIsOpen={setIsOpen}
