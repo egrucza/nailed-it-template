@@ -198,7 +198,7 @@ function App() {
 	function handleSubmit(event: { preventDefault: () => void }) {
 		event.preventDefault();
 		if (isGuessedNumber == isNumberToGuess) {
-			navigate("/thanks", { replace: true });
+			navigate("/", { replace: true });
 			setIsOpen(false);
 		} else {
 		}
@@ -208,19 +208,6 @@ function App() {
 		<div className="app">
 			<nav className="app-nav">
 				<a onClick={() => setIsOpen(true)}>Home</a>
-				{isOpen && (
-					<Modal
-						title={modalTitle}
-						content={modalContent}
-						setIsOpen={setIsOpen}
-					/>
-				)}
-
-				<a onClick={eightBallCheck} href="javascript:void(0)">
-					Objective
-				</a>
-				<Link to="teams">Teams</Link>
-				<a onClick={() => setIsOpen(true)}>Thank You</a>
 				{isOpen && (
 					<Modal
 						title={modalTitle}
@@ -249,6 +236,11 @@ function App() {
 						setIsOpen={setIsOpen}
 					/>
 				)}
+				<a onClick={eightBallCheck} href="javascript:void(0)">
+					Objective
+				</a>
+				<Link to="teams">Teams</Link>
+				<Link to="thanks">Thank You</Link>
 			</nav>
 			<div className="app-content">
 				<Outlet />
