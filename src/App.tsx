@@ -5,9 +5,12 @@ import "./App.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
+import Modal from "./components/Modal/Modal";
+
 function App() {
 	const [isEightBallCheck, setIsEightBallCheck] = useState(false);
 	let navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
 	function ActivateMagic() {
 		let newEightBallText = "";
@@ -164,10 +167,20 @@ function App() {
 			ActivateMagic();
 		}, 500);
 	}
+  const modalTitle = "Insert Modal Title";
+  const modalContent = "Insert Modal Content";
+
 	return (
 		<div className="app">
 			<nav className="app-nav">
-				<Link to="/">Home</Link>
+        <a onClick={() => setIsOpen(true)}>
+          Home
+        </a>
+        {isOpen && <Modal
+        title={modalTitle}
+        content={modalContent}
+        setIsOpen={setIsOpen}/>}
+
 				<a onClick={eightBallCheck} href="javascript:void(0)">
 					Objective
 				</a>
