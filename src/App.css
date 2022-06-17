@@ -111,16 +111,13 @@ footer > p {
 		transform: none;
 	}
 	25% {
-		transform: translateX(-68px) translateY(40px) skewX(5deg) skewY(2deg)
-			scaleX(0.95);
+		transform: translateX(-68px) translateY(40px) skewX(5deg) skewY(2deg) scaleX(0.95);
 	}
 	50% {
-		transform: translateX(68px) translateY(-40px) skewX(5deg) skewY(2deg)
-			scaleX(0.95);
+		transform: translateX(68px) translateY(-40px) skewX(5deg) skewY(2deg) scaleX(0.95);
 	}
 	75% {
-		transform: translateX(28px) translateY(-80px) skewX(5deg) skewY(2deg)
-			scaleX(0.95);
+		transform: translateX(28px) translateY(-80px) skewX(5deg) skewY(2deg) scaleX(0.95);
 	}
 	100% {
 		transform: none;
@@ -138,3 +135,78 @@ footer > p {
 		opacity: 1;
 	}
 }
+
+/* bee movie */
+.bees__scroll-area {
+	/* height: 30vh; */
+	/* overflow: scroll; */
+	background-color: white;
+	scroll-behavior: smooth;
+
+	/* font-size: .75em; */
+	overflow: hidden;
+	width: 100%;
+	height: 300px;
+	position: relative;
+}
+
+.bees__text-content {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 10px;
+	overflow: hidden;
+}
+
+.bees__text-scrollbar {
+	width: 10px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: rgb(236, 234, 234);
+}
+
+.bees__text-scrollbar__scroller {
+	height: 50px;
+	top: 1px;
+	border-radius: 2px;
+	width: 100%;
+	position: absolute;
+	background: linear-gradient(
+        0deg,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 154, 0, 1) 10%,
+        rgba(208, 222, 33, 1) 20%,
+        rgba(79, 220, 74, 1) 30%,
+        rgba(63, 218, 216, 1) 40%,
+        rgba(47, 201, 226, 1) 50%,
+        rgba(28, 127, 238, 1) 60%,
+        rgba(95, 21, 242, 1) 70%,
+        rgba(186, 12, 248, 1) 80%,
+        rgba(251, 7, 217, 1) 90%,
+        rgba(255, 0, 0, 1) 100%
+	);
+}
+
+.bees-continue {
+	display: flex;
+	justify-content: center;
+	margin: 20px auto;
+}
+
+.bees-continue-button {
+	border-radius: 0;
+	border: 2px solid black;
+	color: black;
+	font-family: 'Roboto Mono', monospace;
+	padding: 10px;
+	text-transform: uppercase;
+    font-size: 20px;
+    text-decoration: none;
+	background-color: #41904b;
+	font-weight: bold;
+	cursor: pointer;
+}
+

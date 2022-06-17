@@ -16,6 +16,10 @@
     border-top: 6px solid #457fca;
   }
 
+  .modal-content--wide {
+    width: 800px;
+  }
+
   .modal-header {
     padding: 20px;
   }
