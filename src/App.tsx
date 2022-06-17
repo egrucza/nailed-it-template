@@ -229,16 +229,6 @@ function App() {
     const script = document.querySelector<HTMLElement>(".bees__text-content--script");
     const maxHeight = script.offsetHeight;
 
-    // prevent scrolling on scroll up
-    // if (event.deltaY < 0)
-    // {
-    //  console.log('scrolling up');
-    // }
-    // else if (event.deltaY > 0)
-    // {
-    //  console.log('scrolling down');
-    // }
-
     if (textContent) {
       const style = window.getComputedStyle(textContent);
       const top = style.getPropertyValue('top');
