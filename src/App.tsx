@@ -1,4 +1,5 @@
 import "./App.css";
+import CookieBanner from "./components/CookieBanner";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <div className="app">
+      <CookieBanner/>
       <nav className="app-nav">
         <Link to="/">Home</Link>
         <Link to="objective">Objective</Link>
