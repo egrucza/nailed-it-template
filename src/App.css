@@ -9,6 +9,10 @@
 	padding: 16px;
 }
 
+a {
+	cursor: pointer;
+}
+
 .app-nav {
 	display: flex;
 	align-items: center;
