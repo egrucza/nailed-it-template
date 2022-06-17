@@ -49,24 +49,24 @@
     margin-right: 20px;
   }
 
-  button {
+  .form-button {
     cursor: pointer;
     border: 1px solid #000000;
     width: 112px;
     height: 31px;
     background:  #41904B;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-weight: 700;
   }
 
-  button:active {
+  .form-button:active {
     background:  #53B15F;
   }
 
-  button.try-again {
+  .form-button.try-again {
     background:  #BF5176;
   }
 
-  button.try-again:active {
+  .form-button.try-again:active {
     background:  #D85B85;
   }

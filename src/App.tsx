@@ -1671,7 +1671,7 @@ function App() {
 										);
 									})}
 								</select>
-								<button id="submit" type="submit">Submit</button>
+								<button className="form-button" id="submit" type="submit">SUBMIT</button>
 							</form>
 						}
 						setIsOpen={setIsOpen}
