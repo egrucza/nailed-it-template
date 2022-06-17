@@ -4,10 +4,31 @@
 import "./App.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function App() {
 	const [isEightBallCheck, setIsEightBallCheck] = useState(false);
+	const [isNumberToGuess, setIsNumberToGuess] = useState(
+		Math.floor(Math.random() * 10) + 1
+	);
+	const [isGuessedNumber, setIsGuessedNumber] = useState();
 	let navigate = useNavigate();
+	let guessNumberOptions = [
+		"1",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"10",
+	];
+
+	let shuffledNumbers = guessNumberOptions
+		.map((value) => ({ value, sort: Math.random() }))
+		.sort((a, b) => a.sort - b.sort)
+		.map(({ value }) => value);
 
 	function ActivateMagic() {
 		let newEightBallText = "";
@@ -164,6 +185,17 @@ function App() {
 			ActivateMagic();
 		}, 500);
 	}
+
+	function handleSelectChange(e: { target: { value: any } }) {
+		setIsGuessedNumber(e.target.value);
+	}
+	function handleSubmit(event: { preventDefault: () => void }) {
+		event.preventDefault();
+		if (isGuessedNumber == isNumberToGuess) {
+			navigate("/thanks", { replace: true });
+		} else {
+		}
+	}
 	return (
 		<div className="app">
 			<nav className="app-nav">
@@ -194,6 +226,21 @@ function App() {
 					</div>
 				</section>
 			)}
+			<form onSubmit={handleSubmit}>
+				<select value={isGuessedNumber} onChange={handleSelectChange}>
+					{shuffledNumbers.map((number) => {
+						return (
+							<option
+								value={number}
+								selected={isGuessedNumber == number}
+							>
+								{number}
+							</option>
+						);
+					})}
+				</select>
+				<button type="submit">Submit</button>
+			</form>
 			<footer>
 				<p>Credera ♥️ XD</p>
 			</footer>
