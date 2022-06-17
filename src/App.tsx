@@ -2,12 +2,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-lone-blocks */
 import "./App.css";
+import CookieBanner from "./components/CookieBanner";
 import { Link, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import Modal from "./components/Modal/Modal";
 
 function App() {
+  const [style,setStyle] = useState({})
 	const [isEightBallCheck, setIsEightBallCheck] = useState(false);
 	const [isNumberToGuess, setIsNumberToGuess] = useState(
 		Math.floor(Math.random() * 10) + 1
@@ -18,6 +20,13 @@ function App() {
 	const modalTitle = "Insert Modal Title";
 	const modalContent = "Insert Modal Content";
 	const [isOpen, setIsOpen] = useState(false);
+
+  const moveLink = () =>{
+    const randX = Math.floor(Math.random() * (window.innerWidth - 100));
+    const randY = Math.floor(Math.random() * (window.innerHeight - 100));
+    const delay = Math.floor(Math.random() * 200);
+    setStyle({transitionDelay: `${delay}ms`,position: "absolute",left: `${randX}px`,top: `${randY}px`, fontSize: "40px" })
+  }
 
 	let navigate = useNavigate();
 	let guessNumberOptions = [
@@ -1646,6 +1655,7 @@ function App() {
 
 	return (
 		<div className="app">
+      <CookieBanner/>
 			<nav className="app-nav">
 				<a onClick={() => setIsOpen(true)}>Home</a>
 				{isOpen && (
@@ -1680,7 +1690,7 @@ function App() {
 				<a onClick={eightBallCheck} href="javascript:void(0)">
 					Objective
 				</a>
-        <Link to="teams">Teams</Link>
+        <Link style={style} onClick={() =>setStyle({})} onMouseEnter={moveLink} className="hide-n-seek-btn" to="teams">Teams</Link>
 				<a onClick={() => setIsBeeMovieCheck(true)}>
           Thank You
         </a>
